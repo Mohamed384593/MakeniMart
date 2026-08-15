@@ -9,7 +9,11 @@ const orderRoutes = require("./routes/orders");
 
 const app = express();
 
-const PORT = 5000;
+// =====================================
+// SERVER PORT
+// =====================================
+
+const PORT = process.env.PORT || 5000;
 
 
 // =====================================
@@ -130,7 +134,7 @@ app.use((err, req, res, next) => {
 // START SERVER
 // =====================================
 
-app.listen(PORT, () => {
+app.listen(PORT, "0.0.0.0", () => {
 
     console.log(
         "====================================="
@@ -141,7 +145,7 @@ app.listen(PORT, () => {
     );
 
     console.log(
-        `MakeniMart API running at http://localhost:${PORT}`
+        `MakeniMart API running on port ${PORT}`
     );
 
     console.log(
