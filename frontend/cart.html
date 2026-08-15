@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Shopping Cart - MakeniMart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                MakeniMart
+            </div>
+
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+
+                <li>
+                    <a href="products.html">Products</a>
+                </li>
+
+                <li>
+                    <a href="cart.html">Cart</a>
+                </li>
+
+                <li>
+                    <a href="login.html">Login</a>
+                </li>
+            </ul>
+
+        </nav>
+    </header>
+
+
+    <!-- Shopping Cart -->
+    <main>
+
+        <section class="cart-section">
+
+            <h1>Your Shopping Cart</h1>
+
+            <div class="cart-container">
+
+                <!-- Cart Items -->
+                <div class="cart-items" id="cartItems">
+
+                    <!-- JavaScript will display products here -->
+
+                </div>
+
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+
+                    <h2>Order Summary</h2>
+
+                    <p>
+                        <span>Subtotal:</span>
+
+                        <strong id="cartSubtotal">
+                            NLe 0.00
+                        </strong>
+                    </p>
+
+
+                    <p>
+                        <span>Delivery:</span>
+
+                        <strong id="deliveryFee">
+                            NLe 0.00
+                        </strong>
+                    </p>
+
+
+                    <hr>
+
+
+                    <p class="cart-total">
+
+                        <span>Total:</span>
+
+                        <strong id="cartTotal">
+                            NLe 0.00
+                        </strong>
+
+                    </p>
+
+
+                    <a
+                        href="checkout.html"
+                        class="shop-button"
+                        id="checkoutButton"
+                    >
+                        Proceed to Checkout
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- JavaScript -->
+    <script src="js/cart.js?v=2"></script>
+    <script src="js/customer-auth.js"></script>
+</body>
+
+</html>

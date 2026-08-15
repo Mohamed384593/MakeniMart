@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Account - MakeniMart</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+    <style>
+
+        /* =========================
+           ACCOUNT PAGE
+        ========================= */
+
+        .account-section {
+
+            padding: 30px 20px;
+
+            max-width: 1000px;
+
+            margin: auto;
+
+        }
+
+
+        .account-header {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            margin-bottom: 20px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.08);
+
+        }
+
+
+        .account-header h1 {
+
+            margin-top: 0;
+
+            color: #0d6efd;
+
+        }
+
+
+        .account-grid {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(
+                    auto-fit,
+                    minmax(280px, 1fr)
+                );
+
+            gap: 20px;
+
+        }
+
+
+        .account-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px
+                rgba(0,0,0,0.08);
+
+        }
+
+
+        .account-card h2 {
+
+            margin-top: 0;
+
+            color: #333;
+
+        }
+
+
+        .account-info {
+
+            margin-bottom: 15px;
+
+        }
+
+
+        .account-info strong {
+
+            display: block;
+
+            color: #666;
+
+            font-size: 14px;
+
+            margin-bottom: 4px;
+
+        }
+
+
+        .account-info span {
+
+            font-size: 17px;
+
+        }
+
+
+        .logout-button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #dc3545;
+
+            color: white;
+
+            padding: 13px;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+        }
+
+
+        .logout-button:hover {
+
+            background: #bb2d3b;
+
+        }
+
+
+        .orders-button {
+
+            display: inline-block;
+
+            width: 100%;
+
+            text-align: center;
+
+            background: #0d6efd;
+
+            color: white;
+
+            padding: 13px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+        .orders-button:hover {
+
+            background: #0b5ed7;
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .account-section {
+
+                padding: 20px 12px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+
+            MakeniMart
+
+        </div>
+
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="products.html">
+                    Products
+                </a>
+            </li>
+
+            <li>
+                <a href="cart.html">
+                    Cart
+                </a>
+            </li>
+
+            <li>
+                <a href="account.html">
+                    My Account
+                </a>
+            </li>
+
+            <li>
+                <a
+                    href="#"
+                    id="customerLogout"
+                >
+                    Logout
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     ACCOUNT
+========================= -->
+
+<main>
+
+<section class="account-section">
+
+
+    <!-- ACCOUNT HEADER -->
+
+    <div class="account-header">
+
+        <h1>
+            My Account
+        </h1>
+
+        <p>
+            Welcome to your MakeniMart customer account.
+        </p>
+
+    </div>
+
+
+    <!-- ACCOUNT CARDS -->
+
+    <div class="account-grid">
+
+
+        <!-- CUSTOMER INFORMATION -->
+
+        <div class="account-card">
+
+            <h2>
+                👤 Personal Information
+            </h2>
+
+
+            <div class="account-info">
+
+                <strong>
+                    Full Name
+                </strong>
+
+                <span id="customerName">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="account-info">
+
+                <strong>
+                    Username
+                </strong>
+
+                <span id="customerUsername">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="account-info">
+
+                <strong>
+                    Phone
+                </strong>
+
+                <span id="customerPhone">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="account-info">
+
+                <strong>
+                    Email
+                </strong>
+
+                <span id="customerEmail">
+                    Loading...
+                </span>
+
+            </div>
+
+
+            <div class="account-info">
+
+                <strong>
+                    Delivery Address
+                </strong>
+
+                <span id="customerAddress">
+                    Loading...
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- ORDERS -->
+
+        <div class="account-card">
+
+            <h2>
+                🛒 Orders
+            </h2>
+
+            <p>
+                View and track your MakeniMart orders.
+            </p>
+
+
+            <a
+                href="orders.html"
+                class="orders-button"
+            >
+
+                My Orders
+
+            </a>
+
+        </div>
+
+
+        <!-- LOGOUT -->
+
+        <div class="account-card">
+
+            <h2>
+                🚪 Logout
+            </h2>
+
+            <p>
+                Logout from your MakeniMart customer account.
+            </p>
+
+
+            <button
+                class="logout-button"
+                id="logoutButton"
+            >
+
+                Logout
+
+            </button>
+
+        </div>
+
+
+    </div>
+
+
+</section>
+
+</main>
+
+
+<!-- =========================
+     CUSTOMER AUTH
+========================= -->
+
+<script src="js/customer-auth.js"></script>
+
+
+<script>
+
+
+// =====================================
+// PROTECT ACCOUNT PAGE
+// =====================================
+
+if (!isCustomerLoggedIn()) {
+
+    window.location.href =
+        "customer-login.html";
+
+}
+
+
+// =====================================
+// LOAD CUSTOMER
+// =====================================
+
+const customer =
+    getCustomer();
+
+
+if (customer) {
+
+
+    document.getElementById(
+        "customerName"
+    ).textContent =
+        customer.fullName || "Not provided";
+
+
+    document.getElementById(
+        "customerUsername"
+    ).textContent =
+        customer.username || "Not provided";
+
+
+    document.getElementById(
+        "customerPhone"
+    ).textContent =
+        customer.phone || "Not provided";
+
+
+    document.getElementById(
+        "customerEmail"
+    ).textContent =
+        customer.email || "Not provided";
+
+
+    document.getElementById(
+        "customerAddress"
+    ).textContent =
+        customer.address || "Not provided";
+
+}
+
+
+// =====================================
+// LOGOUT BUTTON
+// =====================================
+
+const logoutButton =
+    document.getElementById(
+        "logoutButton"
+    );
+
+
+if (logoutButton) {
+
+    logoutButton.addEventListener(
+        "click",
+        function() {
+
+            customerLogout();
+
+        }
+    );
+
+}
+
+
+</script>
+
+<script src="js/app.js"></script>
+</body>
+
+</html>

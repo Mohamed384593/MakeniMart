@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>My Account - MakeniMart</title>
+
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            color: #222;
+
+        }
+
+
+        /* ==============================
+           NAVIGATION
+        ============================== */
+
+        .navbar {
+
+            background: #0d6efd;
+
+            color: white;
+
+            padding: 15px 20px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .logo {
+
+            font-size: 24px;
+
+            font-weight: bold;
+
+        }
+
+
+        .nav-links {
+
+            display: flex;
+
+            list-style: none;
+
+            gap: 15px;
+
+            margin: 0;
+
+            padding: 0;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .nav-links a {
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+        }
+
+
+        .nav-links a:hover {
+
+            text-decoration: underline;
+
+        }
+
+
+        /* ==============================
+           ACCOUNT
+        ============================== */
+
+        .account-container {
+
+            width: 100%;
+
+            max-width: 700px;
+
+            margin: 40px auto;
+
+            padding: 20px;
+
+        }
+
+
+        .account-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0, 0, 0, 0.10);
+
+        }
+
+
+        h1 {
+
+            margin-top: 0;
+
+            color: #0d6efd;
+
+        }
+
+
+        .welcome {
+
+            font-size: 18px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        /* ==============================
+           CUSTOMER INFORMATION
+        ============================== */
+
+        .info-box {
+
+            background: #f8f9fa;
+
+            border-radius: 10px;
+
+            padding: 20px;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .info-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+            padding: 12px 0;
+
+            border-bottom: 1px solid #ddd;
+
+        }
+
+
+        .info-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+        .info-label {
+
+            font-weight: bold;
+
+        }
+
+
+        .info-value {
+
+            text-align: right;
+
+            word-break: break-word;
+
+        }
+
+
+        /* ==============================
+           BUTTONS
+        ============================== */
+
+        .button {
+
+            display: inline-block;
+
+            padding: 12px 18px;
+
+            border-radius: 7px;
+
+            text-decoration: none;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            margin: 5px;
+
+        }
+
+
+        .products-button {
+
+            background: #0d6efd;
+
+            color: white;
+
+        }
+
+
+        .orders-button {
+
+            background: #198754;
+
+            color: white;
+
+        }
+
+
+        .logout-button {
+
+            background: #dc3545;
+
+            color: white;
+
+        }
+
+
+        .button:hover {
+
+            opacity: 0.9;
+
+        }
+
+
+        /* ==============================
+           MOBILE
+        ============================== */
+
+        @media (max-width: 600px) {
+
+            .navbar {
+
+                flex-direction: column;
+
+                gap: 12px;
+
+            }
+
+
+            .account-container {
+
+                margin: 20px auto;
+
+                padding: 12px;
+
+            }
+
+
+            .account-card {
+
+                padding: 20px;
+
+            }
+
+
+            .info-row {
+
+                flex-direction: column;
+
+                gap: 5px;
+
+            }
+
+
+            .info-value {
+
+                text-align: left;
+
+            }
+
+
+            .button {
+
+                display: block;
+
+                width: 100%;
+
+                margin: 8px 0;
+
+                text-align: center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                🛒 MakeniMart
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="products.html">
+                        Products
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="cart.html">
+                        Cart
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="customer-account.html">
+                        My Account
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================
+         ACCOUNT CONTENT
+    ====================================== -->
+
+    <main>
+
+        <div class="account-container">
+
+            <div class="account-card">
+
+
+                <h1>
+                    My Account
+                </h1>
+
+
+                <p
+                    class="welcome"
+                    id="welcomeMessage"
+                >
+                    Welcome to MakeniMart.
+                </p>
+
+
+                <!-- CUSTOMER INFORMATION -->
+
+                <div class="info-box">
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Full Name
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="fullName"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Username
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="username"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Phone
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="phone"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Email
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="email"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                    <div class="info-row">
+
+                        <span class="info-label">
+                            Delivery Address
+                        </span>
+
+                        <span
+                            class="info-value"
+                            id="address"
+                        >
+                            -
+                        </span>
+
+                    </div>
+
+
+                </div>
+
+
+                <!-- =================================
+                     ACTION BUTTONS
+                ================================== -->
+
+                <a
+                    href="products.html"
+                    class="button products-button"
+                >
+                    🛍️ Continue Shopping
+                </a>
+
+
+                <a
+                    href="orders.html"
+                    class="button orders-button"
+                >
+                    📦 My Orders
+                </a>
+
+
+                <button
+                    id="logoutButton"
+                    class="button logout-button"
+                >
+                    🚪 Logout
+                </button>
+
+
+            </div>
+
+        </div>
+
+    </main>
+
+
+
+    <!-- =====================================
+         CUSTOMER ACCOUNT JAVASCRIPT
+    ====================================== -->
+
+    <script>
+
+
+        // =====================================
+        // CHECK LOGIN
+        // =====================================
+
+        const loggedIn =
+            localStorage.getItem(
+                "makeniMartCustomerLoggedIn"
+            );
+
+
+        if (loggedIn !== "true") {
+
+            alert(
+                "Please login to view your account."
+            );
+
+
+            window.location.replace(
+                "customer-login.html"
+            );
+
+        }
+
+
+        // =====================================
+        // GET CUSTOMER DATA
+        // =====================================
+
+        const customerData =
+            localStorage.getItem(
+                "makeniMartCustomer"
+            );
+
+
+        if (!customerData) {
+
+            localStorage.removeItem(
+                "makeniMartCustomerLoggedIn"
+            );
+
+
+            window.location.replace(
+                "customer-login.html"
+            );
+
+        }
+
+
+        let customer;
+
+
+        try {
+
+            customer =
+                JSON.parse(customerData);
+
+        } catch (error) {
+
+            console.error(
+                "Customer data error:",
+                error
+            );
+
+
+            localStorage.removeItem(
+                "makeniMartCustomerLoggedIn"
+            );
+
+
+            localStorage.removeItem(
+                "makeniMartCustomer"
+            );
+
+
+            window.location.replace(
+                "customer-login.html"
+            );
+
+        }
+
+
+        // =====================================
+        // DISPLAY CUSTOMER INFORMATION
+        // =====================================
+
+        if (customer) {
+
+            document.getElementById(
+                "welcomeMessage"
+            ).textContent =
+                `Welcome, ${customer.fullName || customer.username}!`;
+
+
+            document.getElementById(
+                "fullName"
+            ).textContent =
+                customer.fullName || "-";
+
+
+            document.getElementById(
+                "username"
+            ).textContent =
+                customer.username || "-";
+
+
+            document.getElementById(
+                "phone"
+            ).textContent =
+                customer.phone || "-";
+
+
+            document.getElementById(
+                "email"
+            ).textContent =
+                customer.email || "-";
+
+
+            document.getElementById(
+                "address"
+            ).textContent =
+                customer.address || "No address provided.";
+
+        }
+
+
+        // =====================================
+        // LOGOUT
+        // =====================================
+
+        document
+            .getElementById("logoutButton")
+            .addEventListener(
+                "click",
+                function() {
+
+
+                    const confirmLogout =
+                        confirm(
+                            "Are you sure you want to logout?"
+                        );
+
+
+                    if (!confirmLogout) {
+
+                        return;
+
+                    }
+
+
+                    localStorage.removeItem(
+                        "makeniMartCustomerLoggedIn"
+                    );
+
+
+                    localStorage.removeItem(
+                        "makeniMartCustomer"
+                    );
+
+
+                    window.location.replace(
+                        "customer-login.html"
+                    );
+
+                }
+            );
+
+
+    </script>
+
+
+</body>
+
+</html>

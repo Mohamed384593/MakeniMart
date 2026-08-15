@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Create Account - MakeniMart</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            color: #222;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+
+        .register-container {
+
+            width: 100%;
+
+            max-width: 480px;
+        }
+
+
+        .register-card {
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 5px 25px
+                rgba(0, 0, 0, 0.10);
+        }
+
+
+        .logo {
+
+            text-align: center;
+
+            font-size: 30px;
+
+            font-weight: bold;
+
+            color: #0d6efd;
+
+            margin-bottom: 5px;
+        }
+
+
+        .subtitle {
+
+            text-align: center;
+
+            color: #666;
+
+            margin-top: 0;
+
+            margin-bottom: 25px;
+        }
+
+
+        .form-group {
+
+            margin-bottom: 16px;
+        }
+
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            outline: none;
+        }
+
+
+        input:focus {
+
+            border-color: #0d6efd;
+        }
+
+
+        button {
+
+            width: 100%;
+
+            border: none;
+
+            background: #198754;
+
+            color: white;
+
+            padding: 14px;
+
+            border-radius: 7px;
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        button:hover {
+
+            background: #157347;
+        }
+
+
+        button:disabled {
+
+            background: #999;
+
+            cursor: not-allowed;
+        }
+
+
+        #message {
+
+            display: none;
+
+            padding: 12px;
+
+            margin-bottom: 18px;
+
+            border-radius: 7px;
+
+            text-align: center;
+
+            font-weight: bold;
+        }
+
+
+        #message.success {
+
+            display: block;
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+        }
+
+
+        #message.error {
+
+            display: block;
+
+            background: #f8d7da;
+
+            color: #842029;
+        }
+
+
+        .login-link {
+
+            text-align: center;
+
+            margin-top: 22px;
+
+            color: #666;
+        }
+
+
+        .login-link a {
+
+            color: #0d6efd;
+
+            text-decoration: none;
+
+            font-weight: bold;
+        }
+
+
+        @media (max-width: 500px) {
+
+            body {
+
+                padding: 12px;
+            }
+
+            .register-card {
+
+                padding: 22px;
+            }
+
+            .logo {
+
+                font-size: 26px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="register-container">
+
+    <div class="register-card">
+
+        <div class="logo">
+            🛒 MakeniMart
+        </div>
+
+        <p class="subtitle">
+            Create your customer account
+        </p>
+
+
+        <div id="message"></div>
+
+
+        <form id="registerForm">
+
+
+            <div class="form-group">
+
+                <label for="fullName">
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    id="fullName"
+                    placeholder="Enter your full name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Choose a username"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="phone">
+                    Phone Number
+                </label>
+
+                <input
+                    type="tel"
+                    id="phone"
+                    placeholder="Enter your phone number"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="email">
+                    Email
+                    <span style="font-weight: normal;">
+                        (optional)
+                    </span>
+                </label>
+
+                <input
+                    type="email"
+                    id="email"
+                    placeholder="Enter your email"
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Minimum 6 characters"
+                    minlength="6"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="address">
+                    Delivery Address
+                </label>
+
+                <input
+                    type="text"
+                    id="address"
+                    placeholder="Enter your delivery address"
+                >
+
+            </div>
+
+
+            <button
+                type="submit"
+                id="registerButton"
+            >
+                Create Account
+            </button>
+
+
+        </form>
+
+
+        <div class="login-link">
+
+            Already have an account?
+
+            <a href="customer-login.html">
+                Login here
+            </a>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<script>
+
+const API_BASE_URL =
+    "http://localhost:5000/api";
+
+
+const registerForm =
+    document.getElementById(
+        "registerForm"
+    );
+
+
+const message =
+    document.getElementById(
+        "message"
+    );
+
+
+const registerButton =
+    document.getElementById(
+        "registerButton"
+    );
+
+
+// =====================================
+// SHOW MESSAGE
+// =====================================
+
+function showMessage(text, type) {
+
+    message.textContent = text;
+
+    message.className = type;
+
+}
+
+
+// =====================================
+// REGISTER CUSTOMER
+// =====================================
+
+registerForm.addEventListener(
+    "submit",
+    async function(event) {
+
+        event.preventDefault();
+
+
+        const fullName =
+            document.getElementById(
+                "fullName"
+            ).value.trim();
+
+
+        const username =
+            document.getElementById(
+                "username"
+            ).value.trim();
+
+
+        const phone =
+            document.getElementById(
+                "phone"
+            ).value.trim();
+
+
+        const email =
+            document.getElementById(
+                "email"
+            ).value.trim();
+
+
+        const password =
+            document.getElementById(
+                "password"
+            ).value;
+
+
+        const address =
+            document.getElementById(
+                "address"
+            ).value.trim();
+
+
+        // =====================================
+        // PASSWORD VALIDATION
+        // =====================================
+
+        if (password.length < 6) {
+
+            showMessage(
+                "Password must be at least 6 characters.",
+                "error"
+            );
+
+            return;
+        }
+
+
+        registerButton.disabled = true;
+
+        registerButton.textContent =
+            "Creating Account...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    `${API_BASE_URL}/customers/register`,
+                    {
+
+                        method: "POST",
+
+                        headers: {
+
+                            "Content-Type":
+                                "application/json"
+                        },
+
+                        body:
+                            JSON.stringify({
+
+                                fullName:
+                                    fullName,
+
+                                username:
+                                    username,
+
+                                phone:
+                                    phone,
+
+                                email:
+                                    email,
+
+                                password:
+                                    password,
+
+                                address:
+                                    address
+
+                            })
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            console.log(
+                "Registration response:",
+                data
+            );
+
+
+            // =====================================
+            // ERROR
+            // =====================================
+
+            if (!response.ok) {
+
+                showMessage(
+                    data.message ||
+                    "Registration failed.",
+                    "error"
+                );
+
+                return;
+            }
+
+
+            // =====================================
+            // SUCCESS
+            // =====================================
+
+            showMessage(
+                "Account created successfully! Redirecting to login...",
+                "success"
+            );
+
+
+            registerForm.reset();
+
+
+            // =====================================
+            // GO TO CUSTOMER LOGIN
+            // =====================================
+
+            setTimeout(
+                function() {
+
+                    window.location.href =
+                        "customer-login.html";
+
+                },
+                1500
+            );
+
+
+        } catch (error) {
+
+            console.error(
+                "REGISTRATION ERROR:",
+                error
+            );
+
+
+            showMessage(
+                "Could not connect to MakeniMart server.",
+                "error"
+            );
+
+
+        } finally {
+
+            registerButton.disabled =
+                false;
+
+            registerButton.textContent =
+                "Create Account";
+
+        }
+
+    }
+);
+
+</script>
+
+
+</body>
+
+</html>

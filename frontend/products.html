@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Products - MakeniMart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+    <!-- =====================================
+         CUSTOMER LOGIN PROTECTION
+    ====================================== -->
+
+    <script>
+
+        const customerLoggedIn =
+            localStorage.getItem(
+                "makeniMartCustomerLoggedIn"
+            );
+
+
+        if (customerLoggedIn !== "true") {
+
+            alert(
+                "Please create an account or login before viewing products."
+            );
+
+            window.location.replace(
+                "customer-login.html"
+            );
+
+        }
+
+    </script>
+
+</head>
+
+
+<body>
+
+
+    <!-- =====================================
+         NAVIGATION
+    ====================================== -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                MakeniMart
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="products.html">
+                        Products
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="cart.html">
+                        Cart
+                    </a>
+                </li>
+
+
+                <li>
+                    <a
+                        href="customer-login.html"
+                        id="accountLink"
+                    >
+                        Login
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+
+    <!-- =====================================
+         PRODUCTS
+    ====================================== -->
+
+    <main>
+
+        <section class="products-section">
+
+            <h1>
+                Our Products
+            </h1>
+
+
+            <p>
+                Browse products available at MakeniMart.
+            </p>
+
+
+            <div
+                class="product-grid"
+                id="productGrid"
+            >
+
+                <!-- Products will be loaded here -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =====================================
+         CUSTOMER ACCOUNT / LOGOUT
+    ====================================== -->
+
+    <script>
+
+        const accountLink =
+            document.getElementById(
+                "accountLink"
+            );
+
+
+        const isLoggedIn =
+            localStorage.getItem(
+                "makeniMartCustomerLoggedIn"
+            );
+
+
+        const customerData =
+            localStorage.getItem(
+                "makeniMartCustomer"
+            );
+
+
+        if (
+            isLoggedIn === "true" &&
+            customerData
+        ) {
+
+            let customer;
+
+            try {
+
+                customer =
+                    JSON.parse(customerData);
+
+            } catch (error) {
+
+                console.error(
+                    "Customer data error:",
+                    error
+                );
+
+                localStorage.removeItem(
+                    "makeniMartCustomerLoggedIn"
+                );
+
+                localStorage.removeItem(
+                    "makeniMartCustomer"
+                );
+
+                window.location.replace(
+                    "customer-login.html"
+                );
+
+            }
+
+
+            if (customer) {
+
+                accountLink.textContent =
+                    "My Account";
+
+                accountLink.href =
+                    "customer-account.html";
+
+
+                // Create Logout link
+
+                const logoutItem =
+                    document.createElement("li");
+
+
+                const logoutLink =
+                    document.createElement("a");
+
+
+                logoutLink.href =
+                    "#";
+
+                logoutLink.textContent =
+                    "Logout";
+
+
+                logoutLink.addEventListener(
+                    "click",
+                    function(event) {
+
+                        event.preventDefault();
+
+
+                        const confirmLogout =
+                            confirm(
+                                "Are you sure you want to logout?"
+                            );
+
+
+                        if (!confirmLogout) {
+
+                            return;
+
+                        }
+
+
+                        localStorage.removeItem(
+                            "makeniMartCustomerLoggedIn"
+                        );
+
+
+                        localStorage.removeItem(
+                            "makeniMartCustomer"
+                        );
+
+
+                        window.location.replace(
+                            "customer-login.html"
+                        );
+
+                    }
+                );
+
+
+                logoutItem.appendChild(
+                    logoutLink
+                );
+
+
+                document
+                    .querySelector(".nav-links")
+                    .appendChild(
+                        logoutItem
+                    );
+
+            }
+
+        }
+
+    </script>
+
+
+
+    <!-- =====================================
+         PRODUCTS JAVASCRIPT
+    ====================================== -->
+
+    <script src="js/customer-auth.js"></script>
+
+    <script src="js/products.js?v=4"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Customer Login - MakeniMart</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     NAVIGATION
+========================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            MakeniMart
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="index.html">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="customer-register.html">
+                    Create Account
+                </a>
+            </li>
+
+            <li>
+                <a href="login.html">
+                    Login
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- =========================
+     LOGIN
+========================= -->
+
+<main>
+
+    <section class="auth-section">
+
+        <div class="auth-card">
+
+            <h1>
+                Customer Login
+            </h1>
+
+            <p>
+                Login to your MakeniMart account.
+            </p>
+
+
+            <!-- LOGIN FORM -->
+
+            <form id="loginForm">
+
+
+                <!-- USERNAME -->
+
+                <label for="username">
+                    Username
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    placeholder="Enter your username"
+                    required
+                >
+
+
+                <!-- PASSWORD -->
+
+                <label for="password">
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <!-- LOGIN BUTTON -->
+
+                <button
+                    type="submit"
+                    id="loginButton"
+                >
+                    Login
+                </button>
+
+
+                <!-- MESSAGE -->
+
+                <p
+                    id="loginMessage"
+                    style="
+                        text-align:center;
+                        margin-top:15px;
+                    "
+                ></p>
+
+
+            </form>
+
+
+            <!-- REGISTER LINK -->
+
+            <p class="auth-link">
+
+                Don't have an account?
+
+                <a href="customer-register.html">
+                    Create Account
+                </a>
+
+            </p>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- =========================
+     CUSTOMER LOGIN JAVASCRIPT
+========================= -->
+
+<script>
+
+const API_BASE_URL =
+    "http://localhost:5000/api";
+
+
+// =====================================
+// LOGIN FORM
+// =====================================
+
+document
+    .getElementById("loginForm")
+    .addEventListener(
+        "submit",
+        async function(event) {
+
+            event.preventDefault();
+
+
+            // =====================================
+            // GET INPUTS
+            // =====================================
+
+            const username =
+                document
+                    .getElementById("username")
+                    .value
+                    .trim();
+
+
+            const password =
+                document
+                    .getElementById("password")
+                    .value;
+
+
+            const message =
+                document
+                    .getElementById("loginMessage");
+
+
+            const loginButton =
+                document
+                    .getElementById("loginButton");
+
+
+            // =====================================
+            // CLEAR MESSAGE
+            // =====================================
+
+            message.textContent = "";
+
+            message.style.color = "";
+
+
+            // =====================================
+            // DISABLE BUTTON
+            // =====================================
+
+            loginButton.disabled = true;
+
+            loginButton.textContent =
+                "Logging in...";
+
+
+            try {
+
+
+                // =====================================
+                // SEND LOGIN REQUEST
+                // =====================================
+
+                const response =
+                    await fetch(
+                        `${API_BASE_URL}/customers/login`,
+                        {
+                            method: "POST",
+
+                            headers: {
+                                "Content-Type":
+                                    "application/json"
+                            },
+
+                            body:
+                                JSON.stringify({
+
+                                    username:
+                                        username,
+
+                                    password:
+                                        password
+
+                                })
+                        }
+                    );
+
+
+                // =====================================
+                // READ RESPONSE
+                // =====================================
+
+                const data =
+                    await response.json();
+
+
+                console.log(
+                    "Customer login response:",
+                    data
+                );
+
+
+                // =====================================
+                // CHECK LOGIN
+                // =====================================
+
+                if (
+                    !response.ok ||
+                    !data.success
+                ) {
+
+                    throw new Error(
+                        data.message ||
+                        "Invalid username or password."
+                    );
+
+                }
+
+
+                // =====================================
+                // SAVE LOGIN STATUS
+                // =====================================
+
+                localStorage.setItem(
+                    "makeniMartCustomerLoggedIn",
+                    "true"
+                );
+
+
+                // =====================================
+                // SAVE CUSTOMER INFORMATION
+                // =====================================
+
+                if (data.customer) {
+
+                    localStorage.setItem(
+                        "makeniMartCustomer",
+                        JSON.stringify(
+                            data.customer
+                        )
+                    );
+
+                }
+
+
+                // =====================================
+                // SHOW SUCCESS
+                // =====================================
+
+                message.style.color =
+                    "green";
+
+                message.textContent =
+                    "Login successful!";
+
+
+                // =====================================
+                // REDIRECT
+                // =====================================
+
+                setTimeout(
+                    function() {
+
+                        window.location.href =
+                            "products.html";
+
+                    },
+                    1000
+                );
+
+
+            } catch (error) {
+
+
+                // =====================================
+                // LOGIN ERROR
+                // =====================================
+
+                console.error(
+                    "CUSTOMER LOGIN ERROR:",
+                    error
+                );
+
+
+                message.style.color =
+                    "red";
+
+                message.textContent =
+                    error.message ||
+                    "Login failed.";
+
+
+            } finally {
+
+
+                // =====================================
+                // ENABLE BUTTON
+                // =====================================
+
+                loginButton.disabled =
+                    false;
+
+                loginButton.textContent =
+                    "Login";
+
+            }
+
+        }
+    );
+
+</script>
+
+
+</body>
+
+</html>

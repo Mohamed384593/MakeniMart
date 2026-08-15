@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Checkout - MakeniMart</title>
+
+    <link
+        rel="stylesheet"
+        href="css/style.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- Navigation -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                MakeniMart
+            </div>
+
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="products.html">
+                        Products
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cart.html">
+                        Cart
+                    </a>
+                </li>
+
+                <li>
+                    <a href="login.html">
+                        Login
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- Checkout -->
+
+    <main>
+
+        <section class="checkout-section">
+
+            <h1>
+                Checkout
+            </h1>
+
+
+            <div class="checkout-container">
+
+
+                <!-- Customer Information -->
+
+                <div class="checkout-form">
+
+                    <h2>
+                        Customer Information
+                    </h2>
+
+
+                    <form id="checkoutForm">
+
+
+                        <label for="fullName">
+                            Full Name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="fullName"
+                            name="fullName"
+                            placeholder="Enter your full name"
+                            required
+                        >
+
+
+                        <label for="phone">
+                            Phone Number
+                        </label>
+
+                        <input
+                            type="tel"
+                            id="phone"
+                            name="phone"
+                            placeholder="Enter your phone number"
+                            required
+                        >
+
+
+                        <label for="email">
+                            Email Address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+
+                        <label for="address">
+                            Delivery Address
+                        </label>
+
+                        <textarea
+                            id="address"
+                            name="address"
+                            rows="4"
+                            placeholder="Enter your delivery address"
+                            required
+                        ></textarea>
+
+<label for="deliveryLocation">
+    Delivery Location
+</label>
+
+<select
+    id="deliveryLocation"
+    name="deliveryLocation"
+    required
+>
+
+    <option value="">
+        Select delivery location
+    </option>
+
+    <optgroup label="Makeni Locations">
+
+        <option value="Magburaka Road">
+            Magburaka Road — NLe 30
+        </option>
+
+        <option value="Teko Road">
+            Teko Road — NLe 30
+        </option>
+
+        <option value="Rogbaneh Road">
+            Rogbaneh Road — NLe 30
+        </option>
+
+        <option value="Freetown Highway">
+            Freetown Highway — NLe 30
+        </option>
+
+        <option value="Kabala Highway">
+            Kabala Highway — NLe 30
+        </option>
+
+        <option value="Azzolini Highway">
+            Azzolini Highway — NLe 30
+        </option>
+
+        <option value="Station Road">
+            Station Road — NLe 30
+        </option>
+
+        <option value="Kamal Street">
+            Kamal Street — NLe 30
+        </option>
+
+        <option value="Pain Street">
+            Pain Street — NLe 30
+        </option>
+
+        <option value="Mummy Street">
+            Mummy Street — NLe 30
+        </option>
+
+        <option value="Compound Street">
+            Compound Street — NLe 30
+        </option>
+
+        <option value="Upper John Street">
+            Upper John Street — NLe 30
+        </option>
+
+        <option value="Upper Banana Street">
+            Upper Banana Street — NLe 30
+        </option>
+
+        <option value="Wusu Street">
+            Wusu Street — NLe 30
+        </option>
+
+        <option value="Conteh Street">
+            Conteh Street — NLe 30
+        </option>
+
+        <option value="Manethe Street">
+            Manethe Street — NLe 30
+        </option>
+
+        <option value="Sesay Street">
+            Sesay Street — NLe 30
+        </option>
+
+        <option value="Soldier Street">
+            Soldier Street — NLe 30
+        </option>
+
+        <option value="Sabu Street">
+            Sabu Street — NLe 30
+        </option>
+
+        <option value="Ayv Drive">
+            Ayv Drive — NLe 30
+        </option>
+
+        <option value="Yiks Lane">
+            Yiks Lane — NLe 30
+        </option>
+
+        <option value="Hospital Road">
+            Hospital Road — NLe 30
+        </option>
+
+        <option value="Kath Hill Road">
+            Kath Hill Road — NLe 30
+        </option>
+
+        <option value="Ring Road">
+            Ring Road — NLe 30
+        </option>
+
+        <option value="Azzolini Lane">
+            Azzolini Lane — NLe 30
+        </option>
+
+        <option value="Central Mosque Way">
+            Central Mosque Way — NLe 30
+        </option>
+
+        <option value="Market Street">
+            Market Street — NLe 30
+        </option>
+
+        <option value="Boima Street">
+            Boima Street — NLe 30
+        </option>
+
+        <option value="Koroma Lane">
+            Koroma Lane — NLe 30
+        </option>
+
+        <option value="Lunsar Street">
+            Lunsar Street — NLe 30
+        </option>
+
+    </optgroup>
+
+
+    <optgroup label="Other">
+
+        <option value="outside-makeni">
+            Outside Makeni — NLe 60
+        </option>
+
+    </optgroup>
+
+</select>
+                        <label for="payment">
+                            Payment Method
+                        </label>
+
+                        <select
+                            id="payment"
+                            name="payment"
+                            required
+                        >
+
+                            <option value="">
+                                Select payment method
+                            </option>
+
+                            <option value="cash">
+                                Cash on Delivery
+                            </option>
+
+                            <option value="mobile-money">
+                                Mobile Money
+                            </option>
+
+                        </select>
+
+
+                        <button type="submit">
+                            Place Order
+                        </button>
+
+
+                    </form>
+
+                </div>
+
+
+                <!-- Order Summary -->
+
+                <div class="checkout-summary">
+
+                    <h2>
+                        Order Summary
+                    </h2>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Products
+                        </span>
+
+                        <strong id="checkoutProducts">
+                            NLe 0.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Delivery
+                        </span>
+
+                        <strong id="checkoutDelivery">
+                            NLe 0.00
+                        </strong>
+
+                    </div>
+
+
+                    <hr>
+
+
+                    <div class="summary-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="checkoutTotal">
+                            NLe 0.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Checkout JavaScript -->
+
+    <script src="js/checkout.js"></script>
+
+
+</body>
+
+</html>

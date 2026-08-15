@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Track Order - MakeniMart</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+
+            margin: 0;
+
+            font-family: Arial, sans-serif;
+
+            background: #f4f6f8;
+
+            color: #222;
+
+        }
+
+        /* =========================
+           HEADER
+        ========================= */
+
+        .header {
+
+            background: #0d6efd;
+
+            color: white;
+
+            padding: 25px 20px;
+
+            text-align: center;
+
+        }
+
+        .header h1 {
+
+            margin: 0 0 8px;
+
+        }
+
+        .header p {
+
+            margin: 0;
+
+        }
+
+        /* =========================
+           CONTAINER
+        ========================= */
+
+        .container {
+
+            max-width: 800px;
+
+            margin: 30px auto;
+
+            padding: 0 15px;
+
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 2px 10px
+                rgba(0,0,0,0.08);
+
+            margin-bottom: 20px;
+
+        }
+
+        .card h2 {
+
+            margin-top: 0;
+
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        label {
+
+            display: block;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: 1px solid #ccc;
+
+            border-radius: 7px;
+
+            font-size: 16px;
+
+            margin-bottom: 18px;
+
+        }
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #0d6efd;
+
+        }
+
+        button {
+
+            width: 100%;
+
+            padding: 13px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background: #0d6efd;
+
+            color: white;
+
+            font-size: 16px;
+
+            cursor: pointer;
+
+        }
+
+        button:hover {
+
+            background: #0b5ed7;
+
+        }
+
+        /* =========================
+           ERROR
+        ========================= */
+
+        .error {
+
+            background: #f8d7da;
+
+            color: #842029;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            margin-top: 15px;
+
+            display: none;
+
+        }
+
+        /* =========================
+           SUCCESS
+        ========================= */
+
+        .success {
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+            padding: 12px;
+
+            border-radius: 7px;
+
+            margin-top: 15px;
+
+            display: none;
+
+        }
+
+        /* =========================
+           ORDER RESULT
+        ========================= */
+
+        .order-result {
+
+            display: none;
+
+        }
+
+        .order-row {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 15px;
+
+            padding: 13px 0;
+
+            border-bottom: 1px solid #eee;
+
+        }
+
+        .order-row:last-child {
+
+            border-bottom: none;
+
+        }
+
+        .label {
+
+            font-weight: bold;
+
+            color: #555;
+
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+
+            display: inline-block;
+
+            padding: 7px 12px;
+
+            border-radius: 6px;
+
+            background: #fff3cd;
+
+            color: #856404;
+
+            font-weight: bold;
+
+        }
+
+        .status.processing {
+
+            background: #cfe2ff;
+
+            color: #084298;
+
+        }
+
+        .status.delivered {
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+
+        }
+
+        .status.cancelled {
+
+            background: #f8d7da;
+
+            color: #842029;
+
+        }
+
+        /* =========================
+           PRODUCTS
+        ========================= */
+
+        .products-section {
+
+            margin-top: 25px;
+
+        }
+
+        .products-title {
+
+            font-size: 20px;
+
+            font-weight: bold;
+
+            margin-bottom: 15px;
+
+        }
+
+        .product-item {
+
+            background: #f8f9fa;
+
+            border: 1px solid #e5e5e5;
+
+            border-radius: 10px;
+
+            padding: 15px;
+
+            margin-bottom: 12px;
+
+        }
+
+        .product-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            gap: 10px;
+
+        }
+
+        .product-name {
+
+            font-size: 17px;
+
+            font-weight: bold;
+
+        }
+
+        .product-price {
+
+            font-weight: bold;
+
+            white-space: nowrap;
+
+        }
+
+        .product-details {
+
+            color: #666;
+
+            margin-top: 7px;
+
+            font-size: 14px;
+
+        }
+
+        .product-subtotal {
+
+            margin-top: 8px;
+
+            font-weight: bold;
+
+        }
+
+        .no-products {
+
+            color: #777;
+
+            background: #f8f9fa;
+
+            padding: 15px;
+
+            border-radius: 8px;
+
+        }
+
+        /* =========================
+           TOTAL
+        ========================= */
+
+        .total-row {
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+
+                margin-top: 20px;
+
+            }
+
+            .card {
+
+                padding: 20px;
+
+            }
+
+            .order-row {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 5px;
+
+            }
+
+            .product-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+            }
+
+            .header h1 {
+
+                font-size: 25px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header class="header">
+
+    <h1>
+        🛒 MakeniMart
+    </h1>
+
+    <p>
+        Track Your Order
+    </p>
+
+</header>
+
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="container">
+
+
+    <!-- =========================
+         TRACK FORM
+    ========================= -->
+
+    <section class="card">
+
+        <h2>
+            Track Your Order
+        </h2>
+
+        <p>
+            Enter your Order ID and the phone number
+            used when placing the order.
+        </p>
+
+
+        <form id="trackingForm">
+
+
+            <label for="orderId">
+                Order ID
+            </label>
+
+            <input
+                type="number"
+                id="orderId"
+                placeholder="Example: 1"
+                min="1"
+                required
+            >
+
+
+            <label for="phone">
+                Phone Number
+            </label>
+
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Example: 035660835"
+                required
+            >
+
+
+            <button type="submit">
+                Track Order
+            </button>
+
+        </form>
+
+
+        <div
+            id="errorMessage"
+            class="error"
+        ></div>
+
+
+        <div
+            id="successMessage"
+            class="success"
+        ></div>
+
+    </section>
+
+
+
+    <!-- =========================
+         ORDER RESULT
+    ========================= -->
+
+    <section
+        id="orderResult"
+        class="card order-result"
+    >
+
+        <h2>
+            Order Details
+        </h2>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Order ID
+            </span>
+
+            <span id="resultOrderId">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Customer
+            </span>
+
+            <span id="resultCustomer">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Phone
+            </span>
+
+            <span id="resultPhone">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Address
+            </span>
+
+            <span id="resultAddress">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Delivery Location
+            </span>
+
+            <span id="resultDeliveryLocation">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Payment
+            </span>
+
+            <span id="resultPayment">
+                -
+            </span>
+
+        </div>
+
+
+        <!-- =========================
+             ORDERED PRODUCTS
+        ========================= -->
+
+        <div class="products-section">
+
+            <div class="products-title">
+                🛍️ Ordered Products
+            </div>
+
+            <div id="resultProducts">
+
+                <div class="no-products">
+                    No product information available.
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             TOTALS
+        ========================= -->
+
+        <div class="order-row">
+
+            <span class="label">
+                Products Total
+            </span>
+
+            <span id="resultProductsTotal">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Delivery Fee
+            </span>
+
+            <span id="resultDeliveryFee">
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row total-row">
+
+            <span class="label">
+                Total
+            </span>
+
+            <strong id="resultTotal">
+                -
+            </strong>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Status
+            </span>
+
+            <span
+                id="resultStatus"
+                class="status"
+            >
+                -
+            </span>
+
+        </div>
+
+
+        <div class="order-row">
+
+            <span class="label">
+                Order Date
+            </span>
+
+            <span id="resultDate">
+                -
+            </span>
+
+        </div>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script src="order-tracking.js"></script>
+
+
+</body>
+
+</html>

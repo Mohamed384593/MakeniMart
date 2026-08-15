@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>MakeniMart - Online Store</title>
+
+    <link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+
+    <!-- =========================
+         NAVIGATION
+    ========================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                MakeniMart
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="index.html">
+                        Home
+                    </a>
+                </li>
+
+                <li>
+                    <a href="products.html">
+                        Products
+                    </a>
+                </li>
+
+                <li>
+                    <a href="cart.html">
+                        Cart
+                    </a>
+                </li>
+
+                <li>
+                    <a href="customer-login.html">
+                        Login
+                    </a>
+                </li>
+
+                <li>
+                    <a href="customer-register.html">
+                        Create Account
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================
+         HOMEPAGE
+    ========================= -->
+
+    <main>
+
+        <section class="hero">
+
+            <h1>
+                Welcome to MakeniMart
+            </h1>
+
+            <p>
+                Shop quality products from
+                the comfort of your home.
+            </p>
+
+
+            <a
+                href="products.html"
+                class="shop-button"
+                id="shopNowButton"
+            >
+                Shop Now
+            </a>
+
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         CUSTOMER ACCESS CONTROL
+    ========================= -->
+
+    <script>
+
+        // =====================================
+        // CHECK CUSTOMER LOGIN
+        // =====================================
+
+        function isCustomerLoggedIn() {
+
+            return (
+                localStorage.getItem(
+                    "makeniMartCustomerLoggedIn"
+                ) === "true"
+            );
+
+        }
+
+
+        // =====================================
+        // SHOP NOW BUTTON
+        // =====================================
+
+        const shopNowButton =
+            document.getElementById(
+                "shopNowButton"
+            );
+
+
+        shopNowButton.addEventListener(
+            "click",
+            function(event) {
+
+                if (!isCustomerLoggedIn()) {
+
+                    event.preventDefault();
+
+                    alert(
+                        "Please create an account or login before shopping."
+                    );
+
+                    window.location.href =
+                        "customer-login.html";
+
+                }
+
+            }
+        );
+
+
+        // =====================================
+        // PROTECT PRODUCTS LINK
+        // =====================================
+
+        const productsLink =
+            document.querySelector(
+                'a[href="products.html"]'
+            );
+
+
+        if (productsLink) {
+
+            productsLink.addEventListener(
+                "click",
+                function(event) {
+
+                    if (!isCustomerLoggedIn()) {
+
+                        event.preventDefault();
+
+                        alert(
+                            "Please create an account or login before viewing products."
+                        );
+
+                        window.location.href =
+                            "customer-login.html";
+
+                    }
+
+                }
+            );
+
+        }
+
+
+        // =====================================
+        // PROTECT CART LINK
+        // =====================================
+
+        const cartLink =
+            document.querySelector(
+                'a[href="cart.html"]'
+            );
+
+
+        if (cartLink) {
+
+            cartLink.addEventListener(
+                "click",
+                function(event) {
+
+                    if (!isCustomerLoggedIn()) {
+
+                        event.preventDefault();
+
+                        alert(
+                            "Please create an account or login before accessing your cart."
+                        );
+
+                        window.location.href =
+                            "customer-login.html";
+
+                    }
+
+                }
+            );
+
+        }
+
+    </script>
+<script src="js/app.js"></script>
+<script src="js/customer-auth.js"></script>
+</body>
+
+</html>
