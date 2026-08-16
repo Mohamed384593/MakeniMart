@@ -12,4 +12,4 @@ backend/node_modules/
 *.db-wal
 
 # Logs
-*.lognode_modules/
+*.log
